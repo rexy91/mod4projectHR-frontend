@@ -8,24 +8,26 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import { Switch, Route } from 'react-router';
-<<<<<<< HEAD
-=======
 import SignUpForm from './Components/SignUpForm';
 
 
 
->>>>>>> d79a6208d3147157b050f2f18f1d1ff7c5ab6cf5
 class App extends React.Component {
 
   // Initialize state token not be empty
 
   state = {
     currentUser: {
-      employees: [],
+      companies: [],
       username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
       id: 0
     },
-    token: ''
+    token: '',
+    employees: []
+    
   }
 
   componentDidMount() {
@@ -47,17 +49,46 @@ class App extends React.Component {
             currentUser: data.user,
             token: data.token
           }, () => {
-            this.props.history.push("/profile")
+            // this.props.history.push("/profile")
           })
         }
       })
+
     }
+   
   }
 
   renderManagerProfile = (routerProps) => {
-    console.log(routerProps)
-    return <ManagerProfileContainer token={this.state.token} user={this.state.currentUser}/>
+    console.log(this.state)
+    return <ManagerProfileContainer {...routerProps} token={this.state.token} user={this.state.currentUser}/>
   }
+
+
+  onSignUpSubmit = (newUser) => {
+        fetch('http://localhost:3000/managers',{
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body:JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(loggedInUserFromBackEnd => {
+          if(!loggedInUserFromBackEnd.error){
+            localStorage.setItem("token", loggedInUserFromBackEnd.token)
+            this.setState({
+              currentUser: loggedInUserFromBackEnd.user,
+              token: loggedInUserFromBackEnd.token
+            }, ()=> {
+              // redirect to the profile page , programmacally push to the url. 
+              this.props.history.push(`/profile/${loggedInUserFromBackEnd.id}`)
+            })
+          }
+    })
+  }
+
+  
 
   onLogInSubmit = (loggedInUSer) => {
 
@@ -82,7 +113,7 @@ class App extends React.Component {
           token: loggedInUserFromBackEnd.token
         }, ()=> {
           // redirect to the profile page , programmacally push to the url. 
-          this.props.history.push("/profile")
+          this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}`)
         })
       }
       else{
@@ -91,8 +122,10 @@ class App extends React.Component {
     })
   }
 
-      render(){
 
+  
+      render(){
+        // console.log(this.state.managers)
       return (
       <div className="App">
         <HomeNavBar/>
@@ -100,8 +133,12 @@ class App extends React.Component {
           <Route exact path = '/home' componenet = { Home }/>
           {/* passing props inside Router  */}
           <Route exact path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
-          <Route exact path = '/signup' component={SignUpForm} />
-          <Route exact path = '/profile' render = {this.renderManagerProfile} />
+
+    
+          <Route exact path = '/signup' render = { () => <SignUpForm onSignUpSubmit = {this.onSignUpSubmit} /> } />
+
+          <Route exact path = '/profile/:id' render = {this.renderManagerProfile} />
+
         </Switch>
       </div>
     );}
