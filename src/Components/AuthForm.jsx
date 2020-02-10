@@ -14,11 +14,16 @@ export class AuthForm extends Component {
       onSubmit = (e) => {
         e.preventDefault()
         this.props.onLogInSubmit(this.state)
+        this.setState({
+            username:'',
+            password:''
+        })
       }
 
     render() {
         return (
             <div>
+                <p>Please Login:</p>
                 <form onSubmit = {this.onSubmit}>
                     <label>Username</label>
                     <input type = 'text' placeholder = 'Your Username' name= 'username' value = {this.state.username} onChange={this.onChange}/>
