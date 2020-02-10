@@ -1,10 +1,16 @@
 import React from 'react';
 import AuthForm from './Components/AuthForm'
 import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Splash from './Components/Splash';
+import NavBar from './Components/NavBar';
+import Display from './Components/Display'
 
 class App extends React.Component {
 
-  // Initialize state token nto be empty
+  Initialize state token nto be empty
+
+ 
 
   state = {
     currentUser: {
@@ -74,10 +80,11 @@ class App extends React.Component {
     })
   }
 
-     render(){
+    render(){
       return (
       <div className="App">
-      <AuthForm onLogInSubmit = {this.onLogInSubmit}  />
+
+          <AuthForm onLogInSubmit = {this.onLogInSubmit}  />
       </div>
     );}
 }
