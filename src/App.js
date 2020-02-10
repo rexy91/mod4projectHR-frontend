@@ -1,12 +1,20 @@
 import AuthForm from './Components/AuthForm'
 import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
+import HomeNavBar from './Components/HomeNavBar'
 
 // React librarys 
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import { Switch, Route } from 'react-router';
+<<<<<<< HEAD
+=======
+import SignUpForm from './Components/SignUpForm';
+
+
+
+>>>>>>> d79a6208d3147157b050f2f18f1d1ff7c5ab6cf5
 class App extends React.Component {
 
   // Initialize state token not be empty
@@ -83,26 +91,18 @@ class App extends React.Component {
     })
   }
 
-     render(){
-      //  console.log(this.props, 'app Props')
+      render(){
+
       return (
       <div className="App">
-      <aside class='side-nav'>
-      <NavLink exact to="/home">Home Page</NavLink>
-      <br></br>
-      <br></br>
-      <NavLink exact to="/login">Log In </NavLink>
-      </aside>
-      
-      {/* Routes  */}
-      <Switch>
-        <Route exact path = '/profile' render = {this.renderManagerProfile} />
-        <Route exact path = '/home' componenet = { Home }/>
-        {/* passing props inside Router  */}
-        <Route path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
-
-       
-      </Switch>
+        <HomeNavBar/>
+        <Switch>
+          <Route exact path = '/home' componenet = { Home }/>
+          {/* passing props inside Router  */}
+          <Route exact path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
+          <Route exact path = '/signup' component={SignUpForm} />
+          <Route exact path = '/profile' render = {this.renderManagerProfile} />
+        </Switch>
       </div>
     );}
 }
