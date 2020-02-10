@@ -1,4 +1,3 @@
-
 import AuthForm from './Components/AuthForm'
 import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
@@ -8,9 +7,6 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import { Switch, Route } from 'react-router';
-
-
-
 class App extends React.Component {
 
   // Initialize state token not be empty
