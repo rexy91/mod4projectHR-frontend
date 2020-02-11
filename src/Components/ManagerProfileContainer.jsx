@@ -10,7 +10,7 @@ export class ManagerProfileContainer extends Component {
 
     logOut = () => {
         localStorage.clear()
-        this.props.history.push(`/home`)
+        this.props.history.push(`/`)
         
     }
 

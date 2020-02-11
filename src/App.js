@@ -17,7 +17,6 @@ import NewEmployeeForm from './Components/NewEmployeeForm';
 import NewCompany from './Components/NewCompany';
 
 
-
 class App extends React.Component {
 
   // Initialize state token not be empty
@@ -136,18 +135,17 @@ class App extends React.Component {
     })
   }
 
-
       render(){
-        // console.log(this.props)
+        console.log('hello') 
       return (
       <div className="App">
         {localStorage.token ? null:<HomeNavBar/>}
         <Switch>
-          <Route exact path = '/home' componenet = { Home }/>
+          <Route exact path = '/' component = { Home }/>
           {/* passing props inside Router  */}
           <Route exact path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
           <Route exact path = '/signup' render = { () => <SignUpForm onSignUpSubmit = {this.onSignUpSubmit} /> } />
-          <Route exact path = '/profile/:id/companies' render = {this.renderManagerProfile} />
+          <Route exact path = '/profile/:id/companies' render = { (routerProps) => (localStorage.token? this.renderManagerProfile(routerProps) : <Home/>)} />
           <Route exact path = '/profile/:id/companies/new-company' render = {routerProps => <NewCompany {...routerProps}/>} />
           <Route exact path = '/profile/:id/companies/:companyId' render = {routerProps => <EmployeeList manager ={this.state.currentUser} {...routerProps}/>}/>
           <Route exact path = '/profile/:id/companies/:companyId/new-employee' render = {routerProps => <NewEmployeeForm {...routerProps}/>} />
