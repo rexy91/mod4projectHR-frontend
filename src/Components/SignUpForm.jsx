@@ -15,6 +15,13 @@ export class SignUpForm extends Component {
     onSubmit = (evt) => {
         evt.preventDefault()
         this.props.onSignUpSubmit(this.state)
+        this.setState({
+            username: '',
+            password: '',
+            firstName:'',
+            lastName: '',
+            email: ''
+        })
         
     } 
            

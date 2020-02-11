@@ -9,6 +9,7 @@ import { Link, NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import { Switch, Route } from 'react-router';
 import SignUpForm from './Components/SignUpForm';
+import EmployeeList from './Components/EmployeeList'
 
 
 
@@ -32,7 +33,8 @@ class App extends React.Component {
 
   componentDidMount() {
     // If localStorage has a current token, fetch the token to be persisted in the backend. 
-
+    // console.log('App did mount')
+    
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
       fetch("http://localhost:3000/persist", {
@@ -50,6 +52,7 @@ class App extends React.Component {
             token: data.token
           }, () => {
             // this.props.history.push("/profile")
+            console.log('hello')
           })
         }
       })
@@ -60,6 +63,7 @@ class App extends React.Component {
 
   renderManagerProfile = (routerProps) => {
     console.log(this.state)
+    console.log(routerProps)
     return <ManagerProfileContainer {...routerProps} token={this.state.token} user={this.state.currentUser}/>
   }
 
@@ -75,6 +79,7 @@ class App extends React.Component {
         })
         .then(res => res.json())
         .then(loggedInUserFromBackEnd => {
+          console.log(loggedInUserFromBackEnd)
           if(!loggedInUserFromBackEnd.error){
             localStorage.setItem("token", loggedInUserFromBackEnd.token)
             this.setState({
@@ -82,7 +87,7 @@ class App extends React.Component {
               token: loggedInUserFromBackEnd.token
             }, ()=> {
               // redirect to the profile page , programmacally push to the url. 
-              this.props.history.push(`/profile/${loggedInUserFromBackEnd.id}`)
+              this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}/companies`)
             })
           }
     })
@@ -113,13 +118,24 @@ class App extends React.Component {
           token: loggedInUserFromBackEnd.token
         }, ()=> {
           // redirect to the profile page , programmacally push to the url. 
-          this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}`)
+          this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}/companies`)
         })
       }
       else{
         // console.log(loggedInUserFromBackEnd) // Else will be returning an error message. 
       }
     })
+  }
+
+  renderCompanyEmployees = (routerProps) => {
+    // console.log(routerProps)
+    let companyId = routerProps.match.params.companyId
+    fetch(`http://localhost:3000/companies/${companyId}`)
+      .then(resp => resp.json())
+      .then(company => {
+        this.setState({employees: company.employees})
+      })
+      // console.log(this.state.employees)
   }
 
 
@@ -133,12 +149,9 @@ class App extends React.Component {
           <Route exact path = '/home' componenet = { Home }/>
           {/* passing props inside Router  */}
           <Route exact path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
-
-    
           <Route exact path = '/signup' render = { () => <SignUpForm onSignUpSubmit = {this.onSignUpSubmit} /> } />
-
-          <Route exact path = '/profile/:id' render = {this.renderManagerProfile} />
-
+          <Route exact path = '/profile/:id/companies' render = {this.renderManagerProfile} />
+          <Route exact path = '/profile/:id/companies/:companyId' render = {this.renderCompanyEmployees}/>
         </Switch>
       </div>
     );}
