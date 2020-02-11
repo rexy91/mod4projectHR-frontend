@@ -12,6 +12,11 @@ import { Switch, Route } from 'react-router';
 import SignUpForm from './Components/SignUpForm';
 import EmployeeList from './Components/EmployeeList'
 import './App.css'
+import NotFound from './Components/NotFound';
+import NewEmployeeForm from './Components/NewEmployeeForm';
+import NewCompany from './Components/NewCompany';
+
+
 
 class App extends React.Component {
 
@@ -63,8 +68,6 @@ class App extends React.Component {
   }
 
   renderManagerProfile = (routerProps) => {
-    console.log(this.state)
-    console.log(routerProps)
     return <ManagerProfileContainer {...routerProps} token={this.state.token} user={this.state.currentUser}/>
   }
 
@@ -133,28 +136,22 @@ class App extends React.Component {
     })
   }
 
-  renderCompanyEmployees = (routerProps) => {
-    // console.log(routerProps)
-    let companyId = routerProps.match.params.companyId
-    fetch(`http://localhost:3000/companies/${companyId}`)
-      .then(resp => resp.json())
-      .then(company => {
-        this.setState({employees: company.employees})
-      })
-      // console.log(this.state.employees)
-  }
 
       render(){
+        // console.log(this.props)
       return (
       <div className="App">
-        <HomeNavBar/>
+        {localStorage.token ? null:<HomeNavBar/>}
         <Switch>
           <Route exact path = '/home' componenet = { Home }/>
           {/* passing props inside Router  */}
           <Route exact path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
           <Route exact path = '/signup' render = { () => <SignUpForm onSignUpSubmit = {this.onSignUpSubmit} /> } />
           <Route exact path = '/profile/:id/companies' render = {this.renderManagerProfile} />
-          <Route exact path = '/profile/:id/companies/:companyId' render = {this.renderCompanyEmployees}/>
+          <Route exact path = '/profile/:id/companies/new-company' render = {routerProps => <NewCompany {...routerProps}/>} />
+          <Route exact path = '/profile/:id/companies/:companyId' render = {routerProps => <EmployeeList manager ={this.state.currentUser} {...routerProps}/>}/>
+          <Route exact path = '/profile/:id/companies/:companyId/new-employee' render = {routerProps => <NewEmployeeForm {...routerProps}/>} />
+          {/* <Route render = {routerProps => <NotFound {...routerProps}/>}/> */}
         </Switch>
       </div>
     );}
