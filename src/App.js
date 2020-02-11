@@ -3,6 +3,7 @@ import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
 import HomeNavBar from './Components/HomeNavBar'
 
+
 // React librarys 
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
@@ -10,8 +11,7 @@ import {withRouter} from 'react-router-dom'
 import { Switch, Route } from 'react-router';
 import SignUpForm from './Components/SignUpForm';
 import EmployeeList from './Components/EmployeeList'
-
-
+import './App.css'
 
 class App extends React.Component {
 
@@ -27,7 +27,8 @@ class App extends React.Component {
       id: 0
     },
     token: '',
-    employees: []
+    employees: [],
+    errorMessages: []
     
   }
 
@@ -80,7 +81,8 @@ class App extends React.Component {
         .then(res => res.json())
         .then(loggedInUserFromBackEnd => {
           console.log(loggedInUserFromBackEnd)
-          if(!loggedInUserFromBackEnd.error){
+          //If there is no error messages
+          if(!loggedInUserFromBackEnd.errors[0]){
             localStorage.setItem("token", loggedInUserFromBackEnd.token)
             this.setState({
               currentUser: loggedInUserFromBackEnd.user,
@@ -90,10 +92,14 @@ class App extends React.Component {
               this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}/companies`)
             })
           }
+          else{
+
+              alert(loggedInUserFromBackEnd.errors)
+
+          }
     })
   }
 
-  
 
   onLogInSubmit = (loggedInUSer) => {
 
@@ -138,10 +144,7 @@ class App extends React.Component {
       // console.log(this.state.employees)
   }
 
-
-  
       render(){
-        // console.log(this.state.managers)
       return (
       <div className="App">
         <HomeNavBar/>

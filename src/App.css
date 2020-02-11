@@ -1,0 +1,30 @@
+.login-form{
+    margin-top: 140px;
+    border: 3px solid #f1f1f1;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-weight: bolder;   
+}
+
+.login-form > p{
+    text-align: center;
+    font-weight: bold;
+}
+
+#loginSubmit{
+
+    background-color: dodgerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#loginSubmit:hover{
+    opacity: 0.7;
+
+}
+
