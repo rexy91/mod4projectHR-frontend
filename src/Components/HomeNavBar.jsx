@@ -17,7 +17,7 @@ const HomeNavBar = () => {
 
         // </div>
         <div className="demo-big-content">
-    <Layout>
+
         <Header title="HR Scheduling System" scroll>
             <Navigation>
             <NavLink exact to="/home">Home Page</NavLink>
@@ -36,7 +36,7 @@ const HomeNavBar = () => {
         <Content>
             <div className="page-content" />
         </Content>
-    </Layout>
+
 </div>
     )
 }

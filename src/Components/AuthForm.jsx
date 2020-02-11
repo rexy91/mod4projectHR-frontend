@@ -12,8 +12,9 @@ export class AuthForm extends Component {
       }
 
       onSubmit = (e) => {
-        
+        console.log('hello')
         e.preventDefault()
+
         this.props.onLogInSubmit(this.state)
         this.setState({
             username:'',
@@ -22,9 +23,9 @@ export class AuthForm extends Component {
       }
 
     render() {
+   
         return (
             <>
-                <p>Login Form</p>
                 <form class = "ui form login-form" onSubmit = {this.onSubmit}>
                     <p>Please Login</p>
                     <label class = 'login-label'>Username</label>
@@ -32,6 +33,7 @@ export class AuthForm extends Component {
                     <label class = 'login-label'>Password</label>
                     <input class = 'login-input'type = 'password' placeholder = 'Your Password' name = 'password' value = {this.state.password} onChange={this.onChange}/>
                     <input id = 'loginSubmit' type = 'submit'/>
+                    
                 </form>
             
             </>
