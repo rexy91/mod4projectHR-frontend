@@ -21,9 +21,7 @@ class EmployeeList extends React.Component {
             .then(company => this.setState({company: company, employees: company.employees}))
     }
 
-    onClick = () =>{
-        
-    }
+    
     render(){
         return (
         <div>

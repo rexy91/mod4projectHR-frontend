@@ -15,6 +15,7 @@ import './App.css'
 import NotFound from './Components/NotFound';
 import NewEmployeeForm from './Components/NewEmployeeForm';
 import NewCompany from './Components/NewCompany';
+import Schedule from './Schedule';
 
 
 class App extends React.Component {
@@ -57,7 +58,7 @@ class App extends React.Component {
             token: data.token
           }, () => {
             // this.props.history.push("/profile")
-            console.log('hello')
+            // console.log('hello')
           })
         }
       })
@@ -136,19 +137,20 @@ class App extends React.Component {
   }
 
       render(){
-        console.log('hello') 
+        // console.log('hello') 
       return (
       <div className="App">
         {localStorage.token ? null:<HomeNavBar/>}
         <Switch>
           <Route exact path = '/' component = { Home }/>
           {/* passing props inside Router  */}
-          <Route exact path='/login' render = {(props) => <AuthForm {...props} onLogInSubmit = {this.onLogInSubmit} />}/> 
+          <Route exact path='/login' render = {(routerProps) => <AuthForm {...routerProps} onLogInSubmit = {this.onLogInSubmit} />}/> 
           <Route exact path = '/signup' render = { () => <SignUpForm onSignUpSubmit = {this.onSignUpSubmit} /> } />
           <Route exact path = '/profile/:id/companies' render = { (routerProps) => (localStorage.token? this.renderManagerProfile(routerProps) : <Home/>)} />
           <Route exact path = '/profile/:id/companies/new-company' render = {routerProps => <NewCompany {...routerProps}/>} />
           <Route exact path = '/profile/:id/companies/:companyId' render = {routerProps => <EmployeeList manager ={this.state.currentUser} {...routerProps}/>}/>
           <Route exact path = '/profile/:id/companies/:companyId/new-employee' render = {routerProps => <NewEmployeeForm {...routerProps}/>} />
+          <Route exact path = '/profile/:id/companies/:companyId/schedule' render = {routerProps => <Schedule {...routerProps}/>} />
           {/* <Route render = {routerProps => <NotFound {...routerProps}/>}/> */}
         </Switch>
       </div>
