@@ -1,12 +1,18 @@
 import React from 'react'
 
-const Employee = ({employee}) => {
-    console.log('erfi')
+const Employee = (props) => {
+
+    const onClickDelete = () => {
+        props.deleteEmployee(props.employee.id)
+    }
+
     return (
         <div>
-            Employee Name: {employee.name}
+            Employee Name: {props.employee.name}
             <br></br>
-            Email: {employee.email}
+            Email: {props.employee.email}
+            <br></br>
+            <button onClick = {onClickDelete}>Delete</button>
             <hr></hr>
         </div>
     )

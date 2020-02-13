@@ -11,7 +11,7 @@ import {withRouter} from 'react-router-dom'
 import { Switch, Route } from 'react-router';
 import SignUpForm from './Components/SignUpForm';
 import EmployeeList from './Components/EmployeeList'
-import './App.css'
+// import './App.css'
 import NotFound from './Components/NotFound';
 import NewEmployeeForm from './Components/NewEmployeeForm';
 import NewCompany from './Components/NewCompany';
@@ -85,7 +85,7 @@ class App extends React.Component {
         .then(loggedInUserFromBackEnd => {
           console.log(loggedInUserFromBackEnd)
           //If there is no error messages
-          if(!loggedInUserFromBackEnd.errors[0]){
+          if(!loggedInUserFromBackEnd.errors){
             localStorage.setItem("token", loggedInUserFromBackEnd.token)
             this.setState({
               currentUser: loggedInUserFromBackEnd.user,
@@ -151,7 +151,7 @@ class App extends React.Component {
           <Route exact path = '/profile/:id/companies/:companyId' render = {routerProps => <EmployeeList manager ={this.state.currentUser} {...routerProps}/>}/>
           <Route exact path = '/profile/:id/companies/:companyId/new-employee' render = {routerProps => <NewEmployeeForm {...routerProps}/>} />
           <Route exact path = '/profile/:id/companies/:companyId/schedule' render = {routerProps => <Schedule {...routerProps}/>} />
-          {/* <Route render = {routerProps => <NotFound {...routerProps}/>}/> */}
+          <Route render = {routerProps => <NotFound {...routerProps}/>}/>
         </Switch>
       </div>
     );}

@@ -33,9 +33,9 @@ export class ManagerProfileContainer extends Component {
         return (
             <div>
                 <button onClick = {this.logOut}>Log Out</button><br></br>
-                <Link to={`/profile/${this.props.user.id}/companies/new-company`}>Create Company</Link>
-                <h3>Welcome {firstName}</h3>
-                <h4>These are the companies you manage</h4>
+                <Link to={`/profile/${this.props.user.id}/companies/new-company`}><button>Create Company</button></Link>
+                <h1>Welcome {firstName}</h1>
+                <h3>These are the companies you manage</h3>
                 {this.renderManagerCompanies()}
             </div>
         )

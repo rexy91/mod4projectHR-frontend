@@ -9,8 +9,17 @@ class EmployeeList extends React.Component {
         employees: []
     }
 
+    deleteEmployee = (id) => {
+        console.log('employee id', id)
+        fetch(`http://localhost:3000/employees/${id}`,{method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(json => {
+            let newEmployees = this.state.employees.filter(employee => employee.id !== id)
+            this.setState({employees: newEmployees})
+        })
+    }
     returnEmployees = () => {
-        let employeesComponents = this.state.employees.map(employee => <Employee key = {`${employee.id}-${employee.name}`} employee ={employee}/>)
+        let employeesComponents = this.state.employees.map(employee => <Employee key = {`${employee.id}-${employee.name}`} deleteEmployee = {this.deleteEmployee} employee ={employee}/>)
         return employeesComponents
     }
 
@@ -21,13 +30,14 @@ class EmployeeList extends React.Component {
             .then(company => this.setState({company: company, employees: company.employees}))
     }
 
+
+
     
     render(){
         return (
         <div>
             <EmployeeContNav managerId = {this.props.manager.id} companyId = {this.state.company.id}/>
-            <h2>{`${this.props.manager.firstName}'s employees in ${this.state.company.name}`}</h2>
-            <Link to = {`/profile/${this.props.manager.id}/companies`} ><button>go back</button></Link> 
+            <h1>{`${this.props.manager.firstName}'s employees in ${this.state.company.name}`}</h1> 
             {this.returnEmployees()}
         </div>
     )}
