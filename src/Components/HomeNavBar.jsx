@@ -7,10 +7,10 @@ import {Layout, Header, Navigation, Drawer, Content} from 'react-mdl'
 const HomeNavBar = () => {
     return (
         <div>
-            <nav>
-                <br></br>
+            <nav style={null}>
+
                 <NavLink exact to="/login">Log In </NavLink>
-                <br></br>
+                
                 <NavLink to='/signup'>Sign Up</NavLink>
             </nav>
 

@@ -3,12 +3,14 @@ import React from 'react'
 import ReactDataSheet from 'react-datasheet';
 import 'react-datasheet/lib/react-datasheet.css';
 import {Link} from 'react-router-dom'
+import ScheduleInstructions from './Components/ScheduleInstructions';
 
 class Schedule extends React.Component {
     state = {
         company: {},
         employees: [],
-        data: []
+        data: [],
+        instructions: false
     }
 
     
@@ -17,7 +19,7 @@ class Schedule extends React.Component {
         fetch(`http://localhost:3000/companies/${companyId}`)
             .then(resp => resp.json())
             .then(company => {
-                // base attribute for schedule is empty array
+                // default attribute a new company schedule is an empty array
                 if(typeof company.schedule[0] === 'object'){
                     let schedule = company.schedule
                     let employees= company.employees
@@ -96,7 +98,9 @@ class Schedule extends React.Component {
     }
 
 
-    
+    toggleInstructions = () => {
+        this.setState({instructions: !this.state.instructions})
+    }
 
     render(){
         return (
@@ -115,6 +119,8 @@ class Schedule extends React.Component {
             />
             <button onClick = {this.onClickSave}> Save </button>
             <Link to ={`/profile/${this.props.match.params.id}/companies/${this.props.match.params.companyId}`}><button >Back to Your Companies</button></Link>
+            <button onClick = {this.toggleInstructions}>Toggle Instructions</button>
+            {this.state.instructions ? <ScheduleInstructions/> : null}
         </div>
         )
     }
