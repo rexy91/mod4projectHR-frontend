@@ -2,7 +2,7 @@ import React from 'react'
 
 const ScheduleInstructions = () => {
     return (
-        <div>
+        <div style = {{backgroundColor: '#EBE9E7', padding: '10px', borderRadius: '5%'}}>
             <h3>How To Effectively Use This Spreadsheet</h3>
             <p><span style = {{color: 'red'}}>DO NOT</span> change the ID for each employee. Technically, 
             changing the ID will not break the application, though if you were to change it and attempt to save your data,

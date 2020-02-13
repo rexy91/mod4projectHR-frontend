@@ -104,7 +104,7 @@ class Schedule extends React.Component {
 
     render(){
         return (
-        <div>
+        <div> 
             <ReactDataSheet
                 valueRenderer={(cell) => cell.value}
                 data = {this.state.data} 

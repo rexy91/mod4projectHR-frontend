@@ -53,6 +53,7 @@ class App extends React.Component {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token)
+          console.log(data)
           this.setState({
             currentUser: data.user,
             token: data.token
@@ -140,9 +141,9 @@ class App extends React.Component {
         // console.log('hello') 
       return (
       <div className="App">
-        {localStorage.token ? null:<HomeNavBar/>}
+        {localStorage.token ? null:<HomeNavBar />}
         <Switch>
-          <Route exact path = '/' component = { Home }/>
+          <Route exact path = '/' render = {() =>  <Home currentUser ={this.state.currentUser}/> }/>
           {/* passing props inside Router  */}
           <Route exact path='/login' render = {(routerProps) => <AuthForm {...routerProps} onLogInSubmit = {this.onLogInSubmit} />}/> 
           <Route exact path = '/signup' render = { () => <SignUpForm onSignUpSubmit = {this.onSignUpSubmit} /> } />

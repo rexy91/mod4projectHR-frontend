@@ -33,6 +33,11 @@ class NewCompany extends React.Component {
             .then(resp => resp.json())
             .then(this.setState({confirmation: 'Successfully Created a New Company! Click the Back button to see!'}))
     }
+
+    alertNewCompany = () => {
+        alert(this.state.confirmation)
+        this.setState({confirmation: null})
+    }
     
     render(){
         // console.log(this.props)
@@ -46,7 +51,7 @@ class NewCompany extends React.Component {
                 <input type = 'submit'/>
             </form>
             <br></br>
-            {this.state.confirmation ? <h4>{this.state.confirmation}</h4>: ''}
+            {this.state.confirmation ? this.alertNewCompany(): null}
             <Link to = {`/profile/${this.props.match.params.id}/companies`} ><button>Back To Companies</button></Link> <br></br>
         </div>
     )}
