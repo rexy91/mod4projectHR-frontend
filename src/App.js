@@ -132,6 +132,7 @@ class App extends React.Component {
         })
       }
       else{
+        alert(loggedInUserFromBackEnd.error)
         // console.log(loggedInUserFromBackEnd) // Else will be returning an error message. 
       }
     })

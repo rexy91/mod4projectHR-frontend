@@ -13,7 +13,6 @@ class Schedule extends React.Component {
         instructions: false
     }
 
-    
     componentDidMount(){
         let companyId = this.props.match.params.companyId
         fetch(`http://localhost:3000/companies/${companyId}`)
