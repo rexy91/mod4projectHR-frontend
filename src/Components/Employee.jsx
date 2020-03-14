@@ -5,7 +5,7 @@ const Employee = (props) => {
     const onClickDelete = () => {
         props.deleteEmployee(props.employee.id)
     }
-
+    
     return (
         <div>
             Employee Name: {props.employee.name}
