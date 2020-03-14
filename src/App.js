@@ -109,7 +109,7 @@ class App extends React.Component {
 
   onLogInSubmit = (loggedInUSer) => {
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://mod4hrprojectbackend.herokuapp.com/login", {
       method: "POST",
       headers: {
         "content-type": "application/json"
