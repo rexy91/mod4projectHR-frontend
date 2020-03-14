@@ -73,9 +73,10 @@ class App extends React.Component {
     return <ManagerProfileContainer {...routerProps} token={this.state.token} user={this.state.currentUser}/>
   }
 
-
   onSignUpSubmit = (newUser) => {
-        fetch('http://localhost:3000/managers',{
+        // fetch('http://localhost:3000/managers',{
+          fetch('https://mod4hrprojectbackend.herokuapp.com/managers',{
+          
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
