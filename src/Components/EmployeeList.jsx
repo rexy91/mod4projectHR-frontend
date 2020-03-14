@@ -27,7 +27,8 @@ class EmployeeList extends React.Component {
 
     componentDidMount(){
         let companyId = this.props.match.params.companyId
-        fetch(`http://localhost:3000/companies/${companyId}`)
+        // fetch(`http://localhost:3000/companies/${companyId}`)
+        fetch(`https://mod4hrprojectbackend.herokuapp.com/${companyId}`)
             .then(resp => resp.json())
             .then(company => this.setState({company: company, employees: company.employees}))
     }
