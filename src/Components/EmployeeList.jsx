@@ -11,7 +11,9 @@ class EmployeeList extends React.Component {
 
     deleteEmployee = (id) => {
         console.log('employee id', id)
-        fetch(`http://localhost:3000/employees/${id}`,{method: 'DELETE'})
+        // fetch(`http://localhost:3000/employees/${id}`,{method: 'DELETE'})
+        fetch(`https://mod4hrprojectbackend.herokuapp.com/${id}`,{method: 'DELETE'})
+        
         .then(resp => resp.json())
         .then(json => {
             let newEmployees = this.state.employees.filter(employee => employee.id !== id)

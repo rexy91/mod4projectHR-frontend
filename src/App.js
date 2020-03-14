@@ -43,7 +43,8 @@ class App extends React.Component {
     
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
-      fetch("http://localhost:3000/persist", {
+      fetch("https://mod4hrprojectbackend.herokuapp.com/persist", {
+        // fetch("http://localhost:3000/persist", {
         // here getting back the token instance from backend persist 
         headers: {
           "Authorization": `bearer ${token}`

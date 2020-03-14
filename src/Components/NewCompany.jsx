@@ -19,7 +19,8 @@ class NewCompany extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/new_company`,{
+        // fetch(`http://localhost:3000/new_company`,{
+        fetch(`https://mod4hrprojectbackend.herokuapp.com/new_company`,{    
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
