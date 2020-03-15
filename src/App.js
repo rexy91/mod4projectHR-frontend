@@ -3,7 +3,6 @@ import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
 import HomeNavBar from './Components/HomeNavBar'
 
-
 // React librarys 
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
@@ -16,6 +15,7 @@ import NotFound from './Components/NotFound';
 import NewEmployeeForm from './Components/NewEmployeeForm';
 import NewCompany from './Components/NewCompany';
 import Schedule from './Schedule';
+import Logout from './Components/Logout';
 
 
 class App extends React.Component {
@@ -142,6 +142,7 @@ class App extends React.Component {
         // console.log('hello') 
       return (
       <div className="App">
+        {localStorage.token ? <Logout/>: null}
         {localStorage.token ? null:<HomeNavBar />}
         <Switch>
           <Route exact path = '/' render = {() =>  <Home currentUser ={this.state.currentUser}/> }/>

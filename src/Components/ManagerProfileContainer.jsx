@@ -3,17 +3,17 @@ import React, { Component } from 'react'
 import CompaniesList from './CompaniesList'
 import { Link } from 'react-router-dom'
 
+
 export class ManagerProfileContainer extends Component {
 
     state = {
         companies: []
     }
 
-    logOut = () => {
-        localStorage.clear()
-        this.props.history.push(`/`)
-        
-    }
+    // logOut = () => {
+    //     localStorage.clear()
+    //     this.props.history.push(`/`)
+    // }
 
     renderManagerCompanies = () => {
         return <CompaniesList match = {this.props.match} companies = {this.state.companies} />
@@ -30,10 +30,9 @@ export class ManagerProfileContainer extends Component {
 
     render() {
         const {firstName} = this.props.user
-        console.log(this.props)
         return (
             <div>
-                <button onClick = {this.logOut}>Log Out</button><br></br>
+                {/* <button onClick = {this.logOut}>Log Out</button><br></br> */}
                 <Link to={`/profile/${this.props.user.id}/companies/new-company`}><button>Create Team/Company</button></Link>
                 <h1>Welcome {firstName}</h1>
                 <h3>These are the teams/companies you manage</h3>
