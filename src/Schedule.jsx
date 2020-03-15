@@ -82,7 +82,7 @@ class Schedule extends React.Component {
     onClickSave =() => {
         console.log('hello')
         let companyId = this.props.match.params.companyId
-        fetch(`http://localhost:3000/companies/${companyId}`, {
+        fetch(`http://localhost:3000/companies/${companyId}`, {gi
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
