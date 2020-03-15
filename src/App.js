@@ -3,7 +3,8 @@ import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
 import HomeNavBar from './Components/HomeNavBar'
 
-// master branch
+// deployment branch
+
 // React librarys 
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
