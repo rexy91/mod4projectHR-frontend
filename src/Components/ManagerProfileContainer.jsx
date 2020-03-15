@@ -20,7 +20,7 @@ export class ManagerProfileContainer extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/managers`)
+        fetch(`https://mod4hrprojectbackend.herokuapp.com/managers`)
         .then(resp => resp.json())
         .then(managers => {
             let foundManager = managers.find(manager => manager.id === this.props.user.id)
