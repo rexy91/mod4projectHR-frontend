@@ -11,9 +11,7 @@ class EmployeeList extends React.Component {
 
     deleteEmployee = (id) => {
         console.log('employee id', id)
-        // fetch(`http://localhost:3000/employees/${id}`,{method: 'DELETE'})
-        fetch(`https://mod4hrprojectbackend.herokuapp.com/${id}`,{method: 'DELETE'})
-        
+        fetch(`http://localhost:3000/employees/${id}`,{method: 'DELETE'})
         .then(resp => resp.json())
         .then(json => {
             let newEmployees = this.state.employees.filter(employee => employee.id !== id)
@@ -24,17 +22,18 @@ class EmployeeList extends React.Component {
         let employeesComponents = this.state.employees.map(employee => <Employee key = {`${employee.id}-${employee.name}`} deleteEmployee = {this.deleteEmployee} employee ={employee}/>)
         return employeesComponents
     }
-    
+
     componentDidMount(){
         let companyId = this.props.match.params.companyId
-        // fetch(`http://localhost:3000/companies/${companyId}`)
-        fetch(`https://mod4hrprojectbackend.herokuapp.com/companies/${companyId}`)
+        fetch(`http://localhost:3000/companies/${companyId}`)
             .then(resp => resp.json())
             .then(company => this.setState({company: company, employees: company.employees}))
     }
 
+
+
+    
     render(){
-        
         return (
         <div>
             <EmployeeContNav managerId = {this.props.manager.id} companyId = {this.state.company.id}/>

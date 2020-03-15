@@ -1,4 +1,5 @@
 import React from 'react'
+
 import ReactDataSheet from 'react-datasheet';
 import 'react-datasheet/lib/react-datasheet.css';
 import {Link} from 'react-router-dom'
@@ -14,8 +15,7 @@ class Schedule extends React.Component {
 
     componentDidMount(){
         let companyId = this.props.match.params.companyId
-        // fetch(`http://localhost:3000/companies/${companyId}`)
-        fetch(`https://mod4hrprojectbackend.herokuapp.com/companies/${companyId}`)
+        fetch(`http://localhost:3000/companies/${companyId}`)
             .then(resp => resp.json())
             .then(company => {
                 // default attribute a new company schedule is an empty array
@@ -82,8 +82,7 @@ class Schedule extends React.Component {
     onClickSave =() => {
         console.log('hello')
         let companyId = this.props.match.params.companyId
-        // fetch(`http://localhost:3000/companies/${companyId}`, {
-        fetch(` https://mod4hrprojectbackend.herokuapp.com/companies/${companyId}`, {
+        fetch(`http://localhost:3000/companies/${companyId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

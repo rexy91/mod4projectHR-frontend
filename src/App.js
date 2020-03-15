@@ -3,7 +3,6 @@ import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
 import HomeNavBar from './Components/HomeNavBar'
 
-// deployment branch
 
 // React librarys 
 import React from 'react';
@@ -44,8 +43,7 @@ class App extends React.Component {
     
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
-      fetch("https://mod4hrprojectbackend.herokuapp.com/persist", {
-        // fetch("http://localhost:3000/persist", {
+      fetch("http://localhost:3000/persist", {
         // here getting back the token instance from backend persist 
         headers: {
           "Authorization": `bearer ${token}`
@@ -74,10 +72,9 @@ class App extends React.Component {
     return <ManagerProfileContainer {...routerProps} token={this.state.token} user={this.state.currentUser}/>
   }
 
+
   onSignUpSubmit = (newUser) => {
-        // fetch('http://localhost:3000/managers',{
-          fetch('https://mod4hrprojectbackend.herokuapp.com/managers',{
-          
+        fetch('http://localhost:3000/managers',{
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
@@ -110,7 +107,7 @@ class App extends React.Component {
 
   onLogInSubmit = (loggedInUSer) => {
 
-    fetch("https://mod4hrprojectbackend.herokuapp.com/login", {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "content-type": "application/json"
