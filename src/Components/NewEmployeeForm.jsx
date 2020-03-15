@@ -17,7 +17,7 @@ class NewEmployeeForm extends React.Component  {
 
     onSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/new_employee',{
+        fetch('https://mod4hrprojectbackend.herokuapp.com/new_employee',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

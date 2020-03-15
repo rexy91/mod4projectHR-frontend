@@ -43,7 +43,7 @@ class App extends React.Component {
     
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
-      fetch("http://localhost:3000/persist", {
+      fetch("https://mod4hrprojectbackend.herokuapp.com/persist", {
         // here getting back the token instance from backend persist 
         headers: {
           "Authorization": `bearer ${token}`
@@ -74,7 +74,7 @@ class App extends React.Component {
 
 
   onSignUpSubmit = (newUser) => {
-        fetch('http://localhost:3000/managers',{
+        fetch('https://mod4hrprojectbackend.herokuapp.com/managers',{
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ class App extends React.Component {
 
   onLogInSubmit = (loggedInUSer) => {
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://mod4hrprojectbackend.herokuapp.com/login", {
       method: "POST",
       headers: {
         "content-type": "application/json"

@@ -15,7 +15,7 @@ class Schedule extends React.Component {
 
     componentDidMount(){
         let companyId = this.props.match.params.companyId
-        fetch(`http://localhost:3000/companies/${companyId}`)
+        fetch(`https://mod4hrprojectbackend.herokuapp.com/companies/${companyId}`)
             .then(resp => resp.json())
             .then(company => {
                 // default attribute a new company schedule is an empty array
@@ -82,7 +82,7 @@ class Schedule extends React.Component {
     onClickSave =() => {
         console.log('hello')
         let companyId = this.props.match.params.companyId
-        fetch(`http://localhost:3000/companies/${companyId}`, {gi
+        fetch(`https://mod4hrprojectbackend.herokuapp.com/companies/${companyId}`, {gi
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
