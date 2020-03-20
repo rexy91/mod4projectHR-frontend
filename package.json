@@ -17,6 +17,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1",
     "react-spreadsheet": "^0.4.43",
+    "sweetalert2": "^9.10.3",
     "typeface-roboto": "0.0.75"
   },
   "scripts": {
