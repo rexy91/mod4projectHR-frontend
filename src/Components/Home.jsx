@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 export class Home extends Component {
 
-    
     render() {
         return (
             <div style ={{backgroundColor: '#EBE9E1', textAlign: 'center'}}>

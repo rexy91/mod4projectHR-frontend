@@ -3,7 +3,6 @@ import ManagerProfileContainer from './Components/ManagerProfileContainer'
 import Home from './Components/Home'
 import HomeNavBar from './Components/HomeNavBar'
 
-
 // React librarys 
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
@@ -16,6 +15,7 @@ import NotFound from './Components/NotFound';
 import NewEmployeeForm from './Components/NewEmployeeForm';
 import NewCompany from './Components/NewCompany';
 import Schedule from './Schedule';
+import Logout from './Components/Logout';
 
 
 class App extends React.Component {
@@ -43,7 +43,7 @@ class App extends React.Component {
     
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
-      fetch("http://localhost:3000/persist", {
+      fetch("https://yourteamtimebackend.herokuapp.com/persist", {
         // here getting back the token instance from backend persist 
         headers: {
           "Authorization": `bearer ${token}`
@@ -74,7 +74,7 @@ class App extends React.Component {
 
 
   onSignUpSubmit = (newUser) => {
-        fetch('http://localhost:3000/managers',{
+        fetch('https://yourteamtimebackend.herokuapp.com/managers',{
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ class App extends React.Component {
 
   onLogInSubmit = (loggedInUSer) => {
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://yourteamtimebackend.herokuapp.com/login", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -142,6 +142,7 @@ class App extends React.Component {
         // console.log('hello') 
       return (
       <div className="App">
+        {localStorage.token ? <Logout/>: null}
         {localStorage.token ? null:<HomeNavBar />}
         <Switch>
           <Route exact path = '/' render = {() =>  <Home currentUser ={this.state.currentUser}/> }/>
