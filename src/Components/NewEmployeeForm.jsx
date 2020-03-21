@@ -45,9 +45,9 @@ class NewEmployeeForm extends React.Component  {
                 <h3>Create a New Employee!</h3>
                 <form onSubmit = {this.onSubmit}>
                     <label>Employee Name</label>
-                    <input type='text' name = 'name' value ={this.state.newEmployee.name} onChange ={this.onChange} />
+                    <input type='text' name = 'name' value ={this.state.newEmployee.name} onChange ={this.onChange} /> <br></br>
                     <label>Employee Email</label>
-                    <input type='text' name = 'email' value ={this.state.newEmployee.email} onChange ={this.onChange} />
+                    <input type='text' name = 'email' value ={this.state.newEmployee.email} onChange ={this.onChange} /><br></br>
                     <input type = 'submit'/>
                 </form>
                 <br></br>

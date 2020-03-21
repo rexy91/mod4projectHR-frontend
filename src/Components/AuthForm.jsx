@@ -29,9 +29,9 @@ export class AuthForm extends Component {
                 <form class = "ui form login-form" onSubmit = {this.onSubmit}>
                     <p>Please Login</p>
                     <label class = 'login-label'>Username</label>
-                    <input class = 'login-input'type = 'text' placeholder = 'Your Username' name= 'username' value = {this.state.username} onChange={this.onChange}/>
+                    <input class = 'login-input'type = 'text' placeholder = 'Your Username' name= 'username' value = {this.state.username} onChange={this.onChange}/> <br></br>
                     <label class = 'login-label'>Password</label>
-                    <input class = 'login-input'type = 'password' placeholder = 'Your Password' name = 'password' value = {this.state.password} onChange={this.onChange}/>
+                    <input class = 'login-input'type = 'password' placeholder = 'Your Password' name = 'password' value = {this.state.password} onChange={this.onChange}/> <br></br>
                     <input id = 'loginSubmit' type = 'submit'/>
                     
                 </form>
