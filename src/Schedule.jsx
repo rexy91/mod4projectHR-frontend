@@ -4,6 +4,7 @@ import ReactDataSheet from 'react-datasheet';
 import 'react-datasheet/lib/react-datasheet.css';
 import {Link} from 'react-router-dom'
 import ScheduleInstructions from './Components/ScheduleInstructions';
+import Swal from 'sweetalert2';
 
 class Schedule extends React.Component {
     state = {
@@ -93,7 +94,13 @@ class Schedule extends React.Component {
             })
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(companyData => {
+            if(companyData.id){
+                Swal.fire({icon: 'success', text: 'Successful Save'})
+            }else{
+                Swal.fire({icon: 'error', text: 'Uh-oh! Something went wrong - try again later.'})
+            }
+        })
     }
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 class NewEmployeeForm extends React.Component  {
     
@@ -29,13 +30,14 @@ class NewEmployeeForm extends React.Component  {
             })
         })
         .then(resp => resp.json())
-        .then(this.setState({confirmation: 'Successfully Created a New Employee! Click the Back button to see!'}))
+        .then(this.setState({newEmployee: {name: '', email: ''}}))
+        Swal.fire({icon: 'success', text: 'Successfully Created a New Employee! Click the Back button to see!'})
     }
 
-    alertNewEmployee = () => {
-        alert(this.state.confirmation)
-        this.setState({confirmation: null})
-    }
+    // alertNewEmployee = () => {
+    //     alert(this.state.confirmation)
+    //     this.setState({confirmation: null})
+    // }
     render(){
         
         return (
@@ -49,7 +51,7 @@ class NewEmployeeForm extends React.Component  {
                     <input type = 'submit'/>
                 </form>
                 <br></br>
-                {this.state.confirmation ? this.alertNewEmployee(): null}
+                {/* {this.state.confirmation ? this.alertNewEmployee(): null} */}
                 <Link to={`/profile/${this.props.match.params.id}/companies/${this.props.match.params.companyId}`}><button>Back to Employees</button></Link>
             </div>
         )

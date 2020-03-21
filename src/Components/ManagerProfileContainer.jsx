@@ -10,10 +10,6 @@ export class ManagerProfileContainer extends Component {
         companies: []
     }
 
-    // logOut = () => {
-    //     localStorage.clear()
-    //     this.props.history.push(`/`)
-    // }
 
     renderManagerCompanies = () => {
         return <CompaniesList match = {this.props.match} companies = {this.state.companies} />

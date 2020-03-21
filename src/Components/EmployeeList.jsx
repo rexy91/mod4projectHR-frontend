@@ -2,6 +2,7 @@ import React from 'react'
 import Employee  from './Employee'
 import {Link} from 'react-router-dom'
 import EmployeeContNav from './EmployeeContNav'
+
 class EmployeeList extends React.Component {
 
     state = {
@@ -29,8 +30,6 @@ class EmployeeList extends React.Component {
             .then(resp => resp.json())
             .then(company => this.setState({company: company, employees: company.employees}))
     }
-
-
 
     
     render(){

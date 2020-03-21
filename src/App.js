@@ -17,6 +17,7 @@ import NewCompany from './Components/NewCompany';
 import Schedule from './Schedule';
 import Logout from './Components/Logout';
 
+import Swal from 'sweetalert2'
 
 class App extends React.Component {
 
@@ -57,13 +58,9 @@ class App extends React.Component {
           this.setState({
             currentUser: data.user,
             token: data.token
-          }, () => {
-            // this.props.history.push("/profile")
-            // console.log('hello')
           })
         }
       })
-
     }
    
   }
@@ -93,13 +90,12 @@ class App extends React.Component {
               token: loggedInUserFromBackEnd.token
             }, ()=> {
               // redirect to the profile page , programmacally push to the url. 
+              Swal.fire({icon: 'success', text: 'Successful Registration'})
               this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}/companies`)
             })
           }
           else{
-
-              alert(loggedInUserFromBackEnd.errors)
-
+              Swal.fire({icon: 'error', text: loggedInUserFromBackEnd.errors})
           }
     })
   }
@@ -128,11 +124,12 @@ class App extends React.Component {
           token: loggedInUserFromBackEnd.token
         }, ()=> {
           // redirect to the profile page , programmacally push to the url. 
+          Swal.fire({icon: 'success', text: 'Successful Log In'})
           this.props.history.push(`/profile/${loggedInUserFromBackEnd.user.id}/companies`)
         })
       }
       else{
-        alert(loggedInUserFromBackEnd.error)
+        Swal.fire({icon: 'error', text: loggedInUserFromBackEnd.error})
         // console.log(loggedInUserFromBackEnd) // Else will be returning an error message. 
       }
     })

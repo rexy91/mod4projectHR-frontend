@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Swal from 'sweetalert2'
 export class SignUpForm extends Component {
 
     state={
@@ -21,6 +22,7 @@ export class SignUpForm extends Component {
             lastName: '',
             email: ''
         })
+        
         
     } 
            

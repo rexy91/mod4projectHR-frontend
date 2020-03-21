@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 class NewCompany extends React.Component {
 
@@ -31,11 +32,11 @@ class NewCompany extends React.Component {
             })
         })
             .then(resp => resp.json())
-            .then(this.setState({confirmation: 'Successfully Created a New Company! Click the Back button to see!'}))
+            .then(this.setState({confirmation: 'Successfully Created a New Company! Click the Back button to see!', companyInfo: {name: ''}}))
     }
 
     alertNewCompany = () => {
-        alert(this.state.confirmation)
+        Swal.fire({icon: 'success', text: this.state.confirmation})
         this.setState({confirmation: null})
     }
     
