@@ -27,7 +27,8 @@ export class AuthForm extends Component {
         return (
             <>
                 <form class = "ui form login-form" onSubmit = {this.onSubmit}>
-                    <p>Please Login</p>
+                    <p>Please Login</p> <br></br>
+                    {'(Note - As the backend database is being hosted on Heroku, on your initial auth, you may experience a delay as the server takes time to fire up. Please only submit form once.)'}<br></br>
                     <label class = 'login-label'>Username</label>
                     <input class = 'login-input'type = 'text' placeholder = 'Your Username' name= 'username' value = {this.state.username} onChange={this.onChange}/> <br></br>
                     <label class = 'login-label'>Password</label>

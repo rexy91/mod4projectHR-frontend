@@ -29,7 +29,8 @@ export class SignUpForm extends Component {
     render() {
         return (
             <div>
-                    <p>Let's Sign Up:</p>
+                    <p>Let's Sign Up:</p> <br></br>
+                    {'(Note - As the backend database is being hosted on Heroku, on your initial auth, you may experience a delay as the server takes time to fire up. Please only submit form once.)'} <br></br>
                     <form onSubmit = {this.onSubmit}>
                         <label>Username</label>
                         <input type = 'text' placeholder = 'Your Username' name= 'username' value = {this.state.username} onChange={this.onChange}/> <br></br>
