@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import CompaniesList from './CompaniesList'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
 export class ManagerProfileContainer extends Component {
@@ -25,8 +26,13 @@ export class ManagerProfileContainer extends Component {
     }
 
     deleteCompany = (id) => {
-        let newCompanies = this.state.companies.filter(company => company.id !== id)
-        this.setState({companies: newCompanies})
+        fetch(`https://yourteamtimebackend.herokuapp.com/companies/${id}`, {method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(data => {
+            Swal.fire({icon: 'success', text: data.message})
+            let newCompanies = this.state.companies.filter(company => company.id !== id)
+            this.setState({companies: newCompanies})
+        })
     }
 
     render() {
