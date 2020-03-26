@@ -12,7 +12,7 @@ export class ManagerProfileContainer extends Component {
 
 
     renderManagerCompanies = () => {
-        return <CompaniesList match = {this.props.match} companies = {this.state.companies} />
+        return <CompaniesList match = {this.props.match} companies = {this.state.companies} deleteCompany = {this.deleteCompany} />
     }
 
     componentDidMount(){
@@ -22,6 +22,11 @@ export class ManagerProfileContainer extends Component {
             let foundManager = managers.find(manager => manager.id === this.props.user.id)
             this.setState({companies: foundManager.companies})
         })
+    }
+
+    deleteCompany = (id) => {
+        let newCompanies = this.state.companies.filter(company => company.id !== id)
+        this.setState({companies: newCompanies})
     }
 
     render() {
