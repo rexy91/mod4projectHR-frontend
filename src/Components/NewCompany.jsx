@@ -1,3 +1,4 @@
+  
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2'
@@ -26,7 +27,7 @@ class NewCompany extends React.Component {
         e.preventDefault()
         let token = localStorage.getItem("token")
 
-        fetch(testUrl,{
+        fetch(realUrl,{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
