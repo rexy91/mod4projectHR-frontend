@@ -124,7 +124,7 @@ class Schedule extends React.Component {
                 }}
             />
             <button onClick = {this.onClickSave}> Save </button>
-            <Link to ={`/profile/${this.props.match.params.id}/companies/${this.props.match.params.companyId}`}><button >Back to Your Companies</button></Link>
+            <Link to ={`/profile/${this.props.match.params.id}/companies/${this.props.match.params.companyId}`}><button >Back to Your Employees</button></Link>
             <button onClick = {this.toggleInstructions}>Toggle Instructions</button>
             {this.state.instructions ? <ScheduleInstructions/> : null}
         </div>

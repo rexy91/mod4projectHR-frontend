@@ -26,7 +26,7 @@ class NewCompany extends React.Component {
         e.preventDefault()
         let token = localStorage.getItem("token")
 
-        fetch(realUrl,{
+        fetch(testUrl,{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

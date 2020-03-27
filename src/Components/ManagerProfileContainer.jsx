@@ -21,11 +21,11 @@ export class ManagerProfileContainer extends Component {
         const realUrl = `https://yourteamtimebackend.herokuapp.com/managers`
         let token = localStorage.getItem("token")
         
-        fetch(realUrl, {headers: {'Authorization': `bearer ${token}`}})
+        fetch(testUrl, {headers: {'Authorization': `bearer ${token}`}})
         .then(resp => resp.json())
         .then(manager => {
             // let foundManager = managers.find(manager => manager.id === this.props.user.id)
-            console.log(manager)
+            
             this.setState({companies: manager.companies})
         })
     }

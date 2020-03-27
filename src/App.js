@@ -45,7 +45,7 @@ class App extends React.Component {
     let realUrl = "https://yourteamtimebackend.herokuapp.com/persist"
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
-      fetch(realUrl, {
+      fetch(testUrl, {
         // here getting back the token instance from backend persist 
         headers: {
           "Authorization": `bearer ${token}`
@@ -74,7 +74,7 @@ class App extends React.Component {
   onSignUpSubmit = (newUser) => {
     let testUrl = 'http://localhost:3000/managers'
     let realUrl = 'https://yourteamtimebackend.herokuapp.com/managers'
-        fetch(realUrl,{
+        fetch(testUrl,{
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
