@@ -1,4 +1,3 @@
-  
 import React, { Component } from 'react'
 import CompaniesList from './CompaniesList'
 import { Link } from 'react-router-dom'

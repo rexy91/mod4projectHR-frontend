@@ -16,6 +16,7 @@ import NewEmployeeForm from './Components/NewEmployeeForm';
 import NewCompany from './Components/NewCompany';
 import Schedule from './Schedule';
 import Logout from './Components/Logout';
+
 import Swal from 'sweetalert2'
 
 class App extends React.Component {

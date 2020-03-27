@@ -8,5 +8,4 @@ const CompaniesList = ({match, companies, deleteCompany}) => {
         </div>
     )
 }
-
 export default CompaniesList
