@@ -41,10 +41,11 @@ class App extends React.Component {
   componentDidMount() {
     // If localStorage has a current token, fetch the token to be persisted in the backend. 
     // console.log('App did mount')
-    
+    let testUrl = 'http://localhost:3000/persist'
+    let realUrl = "https://yourteamtimebackend.herokuapp.com/persist"
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token")
-      fetch("https://yourteamtimebackend.herokuapp.com/persist", {
+      fetch(realUrl, {
         // here getting back the token instance from backend persist 
         headers: {
           "Authorization": `bearer ${token}`
