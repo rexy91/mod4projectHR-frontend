@@ -17,11 +17,16 @@ export class ManagerProfileContainer extends Component {
     }
 
     componentDidMount(){
-        fetch(`https://yourteamtimebackend.herokuapp.com/managers`)
+        const testUrl = 'http://localhost:3000/managers'
+        const realUrl = `https://yourteamtimebackend.herokuapp.com/managers`
+        let token = localStorage.getItem("token")
+        
+        fetch(realUrl, {headers: {'Authorization': `bearer ${token}`}})
         .then(resp => resp.json())
-        .then(managers => {
-            let foundManager = managers.find(manager => manager.id === this.props.user.id)
-            this.setState({companies: foundManager.companies})
+        .then(manager => {
+            // let foundManager = managers.find(manager => manager.id === this.props.user.id)
+            console.log(manager)
+            this.setState({companies: manager.companies})
         })
     }
 
