@@ -71,7 +71,9 @@ class App extends React.Component {
 
 
   onSignUpSubmit = (newUser) => {
-        fetch('https://yourteamtimebackend.herokuapp.com/managers',{
+    let testUrl = 'http://localhost:3000/managers'
+    let realUrl = 'https://yourteamtimebackend.herokuapp.com/managers'
+        fetch(realUrl,{
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
@@ -136,7 +138,7 @@ class App extends React.Component {
   }
 
       render(){
-        // console.log('hello') 
+        
       return (
       <div className="App">
         {localStorage.token ? <Logout/>: null}

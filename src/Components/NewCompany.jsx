@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2'
 
+
+
 class NewCompany extends React.Component {
 
     state = {
@@ -19,12 +21,17 @@ class NewCompany extends React.Component {
     }
 
     onSubmit = (e) => {
+        const testUrl = 'http://localhost:3000/new_company'
+        const realUrl = `https://yourteamtimebackend.herokuapp.com/new_company`
         e.preventDefault()
-        fetch(`https://yourteamtimebackend.herokuapp.com/new_company`,{
+        let token = localStorage.getItem("token")
+
+        fetch(realUrl,{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                accept: 'application/json'
+                accept: 'application/json',
+                'Authorization': `bearer ${token}`
             },
             body: JSON.stringify({
                 ...this.state.companyInfo,
