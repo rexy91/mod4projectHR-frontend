@@ -13,6 +13,7 @@ const Employee = (props) => {
             Email: {props.employee.email}
             <br></br>
             <button onClick = {onClickDelete}>Delete</button>
+            
             <hr></hr>
         </div>
     )
